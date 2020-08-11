@@ -32,18 +32,50 @@
       width: 100%;
       max-width: 330px;
       padding: 15px;
-      margin: auto;
     }
+
+    #form-container{
+      border: solid grey 2px;
+      padding: 15px;
+      background-color: #E5E5EC;
+    }
+    label{
+      font-size: 14px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    h4{
+      text-align: center;
+      text-decoration: underline;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 30px;
+      padding-bottom: 15px;
+    }
+
   </style>
 </head>
 
-<body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) -> Punto 3 y 4.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+<body >  
+    <div class="col">
+      <div class="d-flex justify-content-center"> <img style="width: 30%;" src="img/login.png" alt="login"></div>
+      <div class="d-flex justify-content-center">    
+        <form id="form-container">
+            <h4 >Inicio de sesión</h4>
+            <div class="form-group">
+              <input type="text" onblur="validarUsuario(this.value)" class="form-control" id="usuario" placeholder="Usuario">
+              <label class ="container" id="error-usuario"style="display: none; color: red; font-size: 12px">Usuario no valido </label>
+            </div>
+            <div class="form-group">
+              <input type="password" onblur="validarPass(this.value)" class="form-control" id="password" placeholder="Contraseña">
+              <label class ="container" id="error-pass"style="display: none; color: red; font-size:12px">Contraseña no valida </label>
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+            </div>
+        
+          <button type="button" onclick="validarParametros()" class="btn btn-primary signin">Entrar</button>
+        </form>
     </div>
   </div>
 
