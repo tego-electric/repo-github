@@ -25,7 +25,7 @@ function validarParametros(){
     var pass = document.getElementById("password").value;
 
     if ((user != "") && (pass != "")){
-            sessionStorage.setItem("logeado","si");
+            sessionStorage.setItem("usuario",user);
             window.location.assign('index.html');
     }else{  if (user == ""){
                 document.getElementById("error-usuario").style.display = "block";
