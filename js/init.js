@@ -46,12 +46,7 @@ var getJSONData = function(url){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-  var dir = window.location.href.indexOf("login");
-      if (dir == -1){
-        if (sessionStorage.length == 0){
-        window.location.assign("login.html");
-        }
-      };
+  
 
 });
 
