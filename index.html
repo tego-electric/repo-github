@@ -12,14 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <script>
-      var dir = window.location.href.indexOf("login");
-      if (dir == -1){
-        if (sessionStorage.length == 0){
-        window.location.assign("login.html");
-        }
-      }
-    </script>
+    
   </head>
   <body>
     <nav class="site-header sticky-top py-1 bg-dark">
@@ -29,7 +22,7 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block" onclick="signOut();" href="cart.html">Sign out</a>
+        <a id="usernav" class="py-2 d-none d-md-inline-block" onclick="signOut();" href="index.htm"> out</a>
       </div>
     </nav>
     <main role="main">
