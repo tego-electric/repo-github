@@ -7,7 +7,6 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/pro
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 
-var usuarioGoogle = NULL;
 
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -61,8 +60,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 function onSignIn(googleUser) {
   // Useful data for your client-side scripts:
   var profile = googleUser.getBasicProfile();
-  usuarioGoogle =  profile.getName();
-  $("#usernav").text(usuarioGoogle + ": sign out")
   console.log("ID: " + profile.getId()); // Don't send this directly to your server!
   console.log('Full Name: ' + profile.getName());
   console.log('Given Name: ' + profile.getGivenName());
