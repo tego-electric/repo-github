@@ -65,22 +65,20 @@
             <h4 >Inicio de sesión</h4>
             <div class="form-group">
               <input type="text" onblur="validarUsuario(this.value)" class="form-control" id="usuario" placeholder="Usuario">
-              <label class ="container" id="error-usuario"style="display: none; color: red; font-size: 12px">Usuario no valido </label>
+              <label class ="container" id="error-usuario"style="display: none; color: red; font-size: 12px"> </label>
             </div>
             <div class="form-group">
               <input type="password" onblur="validarPass(this.value)" class="form-control" id="password" placeholder="Contraseña">
-              <label class ="container" id="error-pass"style="display: none; color: red; font-size:12px">Contraseña no valida </label>
-            </div>
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+              <label class ="container" id="error-pass"style="display: none; color: red; font-size:12px"></label>
             </div>
         
             <div  style="padding-bottom:10px;">
               <button type="button" onclick="validarParametros()" class="btn btn-primary signin">Entrar</button>
             </div>
 
-            <div class="g-signin2"  data-onsuccess="onSignIn">
+            <div class="d-flex justify-content-center">
+              <div class="g-signin2"  data-onsuccess="onSignIn"></div>
+            </div> 
 
           </div>
         </form>
