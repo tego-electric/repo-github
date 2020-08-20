@@ -24,10 +24,12 @@
       display: -ms-flexbox;
       display: flex;
       -ms-flex-align: center;
-      align-items: center;
+      /*align-items: center;*/
       padding-top: 40px;
       padding-bottom: 40px;
       background-color: #f5f5f5;
+      background-image: url("img/body-fondo2.jpeg");
+      background-size: cover;
     }
 
     .signin {
@@ -37,55 +39,76 @@
     }
 
     #form-container{
-      border: solid grey 2px;
-      padding: 15px;
-      background-color: #E5E5EC;
+      border: solid rgb(0, 0, 0) 2px;
+      padding: 30px;
+      background:rgba(255, 255, 255, 0.7);
     }
     label{
-      font-size: 14px;
+      font-size: 15px;
       font-family: 'Times New Roman', Times, serif;
+      color: red;
+      font-weight: bold;
+      letter-spacing: 2px;
     }
 
     h4{
       text-align: center;
       text-decoration: underline;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 30px;
+      font-size: 40px;
       padding-bottom: 15px;
     }
+    
 
   </style>
 </head>
 
 <body >
-    <div class="col-sm-12">
-      <div class="d-flex justify-content-center"> <img style="width: 30%;" src="img/login.png" alt="login"></div>
-      <div class="d-flex justify-content-center">    
-        <form id="form-container">
-            <h4 >Inicio de sesión</h4>
-            <div class="form-group">
-              <input type="text" onblur="validarUsuario(this.value)" class="form-control" id="usuario" placeholder="Usuario">
-              <label class ="container" id="error-usuario"style="display: none; color: red; font-size: 12px"> </label>
-            </div>
-            <div class="form-group">
-              <input type="password" onblur="validarPass(this.value)" class="form-control" id="password" placeholder="Contraseña">
-              <label class ="container" id="error-pass"style="display: none; color: red; font-size:12px"></label>
-            </div>
-        
-            <div  style="padding-bottom:10px;">
-              <button type="button" onclick="validarParametros()" class="btn btn-primary signin">Entrar</button>
-            </div>
-
-            <div class="d-flex justify-content-center">
-              <div class="g-signin2"  data-onsuccess="onSignIn"></div>
-            </div> 
-
+    <div class="col-12">
+        <div class="row justify-content-center h-25">
+          <div class="col-sm-auto ">
+            <img src="img/T-arriba.png" alt="" srcset="">
           </div>
-        </form>
-    </div>
+        </div> 
+        <div class="row justify-content-center h-50" >
+          <div class="col-sm-auto h-100">
+            <form  id="form-container">
+              <h4 >Inicio de sesión</h4>
+              <div class="form-group">
+                <input type="text" onblur="validarUsuario(this.value)" class="form-control" id="usuario" placeholder="Usuario">
+                <label class ="container" id="error-usuario"style="display: none;"> </label>
+              </div>
+              <div class="form-group">
+                <input type="password" onblur="validarPass(this.value)" class="form-control" id="password" placeholder="Contraseña">
+                <label class ="container" id="error-pass"style="display: none;"></label>
+              </div>
+          
+              <div  style="padding-bottom:10px;">
+                <button type="button" onclick="validarParametros()" class="btn btn-dark signin">Entrar</button>
+              </div>              
+  
+              <div class="d-flex justify-content-center">
+                <div class="g-signin2" data-theme="dark" data-width="100%" data-onsuccess="onSignIn"></div>
+              </div> 
+
+              <div class="">
+                <h5><a href="">Registrese aqui</a></h5>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row justify-content-end h-25">
+          <div class="col-sm-auto align-self-end">
+            <img src="img/T-abajo.png" alt="" srcset="">
+          </div>
+        </div> 
+    
   </div>
+  
+  
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
 </body>
 </html>
