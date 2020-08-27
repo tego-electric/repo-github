@@ -11,7 +11,7 @@ function validarUsuario(valor){
             error.style.display = "block";
             return false;
     }else if (valor.indexOf("@") == -1){
-                error.innerHTML = "Ingrese un correo valido";    
+                error.innerHTML = "Ingrese un correo valido";  
                 error.style.display = "block";
                 return false;
         } else {

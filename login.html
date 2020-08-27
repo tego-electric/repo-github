@@ -39,15 +39,10 @@
 
     #form-container{
       border: solid rgb(0, 0, 0) 2px;
-      padding: 30px;
+      border-radius: 10px;
+      padding: 15px;
       background:rgba(255, 255, 255, 0.7);
-    }
-    label{
-      font-size: 15px;
-      font-family: 'Times New Roman', Times, serif;
-      color: red;
-      font-weight: bold;
-      letter-spacing: 2px;
+      
     }
 
     h4{
@@ -55,7 +50,18 @@
       text-decoration: underline;
       font-family: 'Times New Roman', Times, serif;
       font-size: 40px;
-      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+    .label-error{
+      font-size: 15px;
+      font-family: 'Times New Roman', Times, serif;
+      color: red;
+      font-weight: bold;
+      letter-spacing: 1px;
+      display: none;
+      border: 2px solid rgb(245, 90, 90);
+      border-radius:3px;
+      color: black;
     }
     
 
@@ -63,10 +69,10 @@
 </head>
 
 <body >
-    <div class="col-12">
+    <div class="col-12 h-100">
         <div class="row justify-content-center h-25">
           <div class="col-sm-auto ">
-            <img src="img/T-arriba.png" alt="" srcset="">
+            <img src="img/T-arriba.png"  class="img-fluid" alt="" srcset="">
           </div>
         </div> 
         <div class="row justify-content-center h-50" >
@@ -74,31 +80,31 @@
             <form  id="form-container">
               <h4 >Inicio de sesión</h4>
               <div class="form-group">
-                <input type="text" onblur="validarUsuario(this.value)" class="form-control" id="usuario" placeholder="Usuario">
-                <label class ="container" id="error-usuario"style="display: none;"> </label>
+                <input type="email" onblur="validarUsuario(this.value)" class="form-control" id="usuario" placeholder="Usuario@">
+                <label class ="container label-error" id="error-usuario"> </label>
               </div>
               <div class="form-group">
                 <input type="password" onblur="validarPass(this.value)" class="form-control" id="password" placeholder="Contraseña">
-                <label class ="container" id="error-pass"style="display: none;"></label>
+                <label class ="container label-error" id="error-pass"></label>
               </div>
           
-              <div  style="padding-bottom:10px;">
-                <button type="button" onclick="validarParametros()" class="btn btn-dark signin">Entrar</button>
+              <div  class="d-flex justify-content-center">
+                <button type="button" onclick="validarParametros()" class="btn btn-dark signin w-75">Entrar</button>
               </div>              
   
-              <div class="d-flex justify-content-center" style="margin-top: 15px;">
+              <div class="d-flex justify-content-center" style="margin-top: 10px;">
                 <div class="g-signin2" data-theme="dark" data-width="300" data-onsuccess="onSignIn"></div>
               </div> 
 
-              <div style="margin-top: 15px; text-align: end;">
+              <div style="text-align: end;">
                 <h5><a href="">Registrese aqui</a></h5>
               </div>
             </form>
           </div>
         </div>
-        <div class="row justify-content-end h-25">
-          <div class="col-sm-auto align-self-end">
-            <img src="img/T-abajo.png" alt="" srcset="">
+        <div class="row justify-content-end h-25 ">
+          <div class="col-sm-auto align-self-end d-none d-md-block">
+            <img src="img/T-abajo.png"  class="img-fluid" alt="" srcset="">
           </div>
         </div> 
     

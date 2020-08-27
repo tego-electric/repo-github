@@ -46,7 +46,15 @@ var getJSONData = function(url){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-  
+  if (sessionStorage.length != 0){
+    var user = sessionStorage.getItem("usuario");
+    var pos = user.lastIndexOf("@");
+    var newuser = user.slice(0,pos);
+    var btns = document.getElementsByClassName("btn dropdown-toggle")
+    for(let i =0; i<btns.length;i++){
+      btns[i].innerHTML = newuser;
+    }
+  }
 
 });
 
@@ -65,6 +73,11 @@ function onSignIn(googleUser) {
   // The ID token you need to pass to your backend:
   //var id_token = googleUser.getAuthResponse().id_token;
   //console.log("ID Token: " + id_token);
+}
+
+function signOut(){
+  sessionStorage.removeItem("usuario");
+  window.location.assign('login.html');
 }
 /*
 function signOut() {
