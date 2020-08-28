@@ -15,9 +15,9 @@ var searchVar = document.getElementById("search");
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
-            arrayproductos = resultObj.data;
+            //arrayproductos = resultObj.data;
             //Muestro las categorías ordenadas
-            sortAndShowCategories(ORDER_ASC_BY_PRICE,arrayproductos);
+            sortAndShowCategories(ORDER_ASC_BY_PRICE,resultObj.data);
         }
     });
 
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         minCount = undefined;
         maxCount = undefined;
 
-        productosDetalle(currentCategoriesArray);
+        productosDetalle(arrayproductos);
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             maxCount = undefined;
         }
 
-        productosDetalle(currentCategoriesArray);
+        productosDetalle(arrayproductos);
     });
 });
 
@@ -77,13 +77,13 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
     currentSortCriteria = sortCriteria;
 
     if(categoriesArray != undefined){
-        currentCategoriesArray = categoriesArray;
+        arrayproductos = categoriesArray;
     }
 
-    currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+    arrayproductos = sortCategories(currentSortCriteria, arrayproductos);
 
     //Muestro las categorías ordenadas
-    productosDetalle(currentCategoriesArray);
+    productosDetalle(arrayproductos);
 }
 
 
@@ -130,19 +130,10 @@ function productosDetalle(array){
     var container_div = document.getElementById("containerDecks");
     
     for (i = 0; i<array.length;i++){
-        /*if  (i%3 == 0){
-                if (i!= 0){
-                    container_div.lastChild.innerHTML = htmlAppendToInner;
-                    htmlAppendToInner = "";
-                }
-                var newrow = document.createElement("div");
-                newrow.className = "row";
-                container_div.appendChild(newrow);
-        }*/
         let dato = array[i];
 
-        if (((minCount == undefined) || (minCount != undefined && parseInt(dato.soldCount) >= minCount)) &&
-        ((maxCount == undefined) || (maxCount != undefined && parseInt(dato.soldCount) <= maxCount))){
+        if (((minCount == undefined) || (minCount != undefined && parseInt(dato.cost) >= minCount)) &&
+        ((maxCount == undefined) || (maxCount != undefined && parseInt(dato.cost) <= maxCount))){
             htmlAppendToInner+= `
             <div class="col-md-4 carta" style ="padding: 10px;">
                 <div class="card h-100">
