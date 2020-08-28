@@ -15,7 +15,7 @@
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
+    <nav class="site-header sticky-top py-1">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
@@ -27,32 +27,36 @@
            
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button type="button" class="dropdown-item" onclick="signOut()">Sign out</button>
+            <button type="button" class="dropdown-item" onclick="signOut(); onSignIn()">Sign out</button>
           </div>
         </div>
       </div>
     </nav>
 
     <main role="main" class="pb-5">
-      <div class="text-center p-4">
+      <div class="titulo-class text-center p-4">
           <h2>Productos</h2>
       </div>
     <div class="container p-3">
       <div class="row">
+          <div class="col align-self-end">
+            <label for="search">Buscar:</label>
+            <input type="search" id="search" name="search">   
+          </div>
           <div class="col text-right">
               <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
                   <label class="btn btn-light active" id="sortAsc" >
-                      <input type="radio" name="options" autocomplete="off" checked>A-Z
+                      <input type="radio" name="options" autocomplete="off" checked>Precio Asc
                   </label>
                   <label class="btn btn-light" id="sortDesc" >
-                      <input type="radio" name="options" autocomplete="off">Z-A
+                      <input type="radio" name="options" autocomplete="off">Precio Desc
                   </label>
                   <label class="btn btn-light" id="sortByCountDesc" >
                       <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.Des
                   </label>
                   <label class="btn btn-light" id="sortByCountAsc" >
                     <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down-alt"></i>Cant.Asc
-                </label>
+                  </label>
               </div>
           </div>
       </div>
@@ -91,7 +95,7 @@
 
 
 
-    <footer class="text-muted bg-light">
+    <footer class="text-muted">
       <div class="container">
         <p class="float-right">
           <a href="#">Volver arriba</a>

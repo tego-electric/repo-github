@@ -1,11 +1,13 @@
-const ORDER_ASC_BY_NAME = "AZ";
-const ORDER_DESC_BY_NAME = "ZA";
+const ORDER_ASC_BY_PRICE = "priceAsd";
+const ORDER_DESC_BY_PRICE = "priceDesc";
 const ORDER_BY_PROD_COUNT_DESC = "cantDesc";
 const ORDER_BY_PROD_COUNT_ASC = "cantAsc";
 var arrayproductos = [];
 var currentSortCriteria = undefined;
 minCount = undefined;
 maxCount = undefined;
+
+var searchVar = document.getElementById("search");
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -15,16 +17,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj.status === "ok") {
             arrayproductos = resultObj.data;
             //Muestro las categorías ordenadas
-            sortAndShowCategories(ORDER_ASC_BY_NAME,arrayproductos);
+            sortAndShowCategories(ORDER_ASC_BY_PRICE,arrayproductos);
         }
     });
 
     document.getElementById("sortAsc").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_ASC_BY_NAME);
+        sortAndShowCategories(ORDER_ASC_BY_PRICE);
     });
 
     document.getElementById("sortDesc").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_DESC_BY_NAME);
+        sortAndShowCategories(ORDER_DESC_BY_PRICE);
     });
 
     document.getElementById("sortByCountDesc").addEventListener("click", function(){
@@ -87,17 +89,17 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 
 function sortCategories(criteria, array){
     let result = [];
-    if (criteria === ORDER_ASC_BY_NAME)
+    if (criteria === ORDER_ASC_BY_PRICE)
     {
         result = array.sort(function(a, b) {
-            if ( a.name < b.name ){ return -1; }
-            if ( a.name > b.name ){ return 1; }
+            if ( a.cost < b.cost ){ return -1; }
+            if ( a.cost > b.cost ){ return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_DESC_BY_NAME){
+    }else if (criteria === ORDER_DESC_BY_PRICE){
         result = array.sort(function(a, b) {
-            if ( a.name > b.name ){ return -1; }
-            if ( a.name < b.name ){ return 1; }
+            if ( a.cost > b.cost ){ return -1; }
+            if ( a.cost < b.cost ){ return 1; }
             return 0;
         });
     }else if (criteria === ORDER_BY_PROD_COUNT_DESC){
@@ -142,7 +144,7 @@ function productosDetalle(array){
         if (((minCount == undefined) || (minCount != undefined && parseInt(dato.soldCount) >= minCount)) &&
         ((maxCount == undefined) || (maxCount != undefined && parseInt(dato.soldCount) <= maxCount))){
             htmlAppendToInner+= `
-            <div class="col-md-4" style ="padding: 10px;">
+            <div class="col-md-4 carta" style ="padding: 10px;">
                 <div class="card h-100">
                     <div class="card-header" style="text-align: right">Sold count: `+ dato.soldCount +`</div>
                     <img src="`+ dato.imgSrc + `" class="card-img-top" alt="`+ dato.name +`">
@@ -162,3 +164,40 @@ function productosDetalle(array){
     //container_div.lastChild.innerHTML = htmlAppendToInner;
     
 }
+
+searchVar.addEventListener("keyup", (event) => {
+    getJSONData(PRODUCTS_URL).then(function(resultObj) {
+        if (resultObj.status === "ok") {
+            arrayproductos = resultObj.data;
+            //Muestro las categorías ordenadas
+        }
+
+    });
+
+    var container_div = document.getElementById("containerDecks");
+    var valor  = (document.getElementById("search").value).toLowerCase();
+    var htmlAppendToInner = "";
+    for (datos of arrayproductos) {
+        var nombre = (datos.name).toLowerCase();
+        var desc = (datos.description).toLowerCase();
+        if ((nombre.indexOf(valor) != -1) || (desc.indexOf(valor) != -1)){
+            htmlAppendToInner+= `
+            <div class="col-md-4 carta" style ="padding: 10px;">
+                <div class="card h-100">
+                    <div class="card-header" style="text-align: right">Sold count: `+ datos.soldCount +`</div>
+                    <img src="`+ datos.imgSrc + `" class="card-img-top" alt="`+ datos.name +`">
+                    <div class="card-body">
+                        <h5 class="card-title">`+ datos.name +`</h5>
+                        <p class="card-text">`+ datos.description +`</p>
+                    </div>
+                    <div class="card-footer">
+                        <div style="font-size:25px; vertical-align:middle">`+ datos.currency+ `: `+datos.cost+`</div>
+                    </div>
+                </div>
+            </div>
+            `
+        }
+        container_div.innerHTML= htmlAppendToInner;
+    }
+
+});

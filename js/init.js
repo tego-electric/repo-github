@@ -76,7 +76,7 @@ function onSignIn(googleUser) {
 }
 
 function signOut(){
-  sessionStorage.removeItem("usuario");
+  sessionStorage.clear();
   window.location.assign('login.html');
 }
 /*
