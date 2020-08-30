@@ -6,32 +6,41 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 function validarUsuario(valor){
     var error = document.getElementById("error-usuario");
+    var user =  document.getElementById("usuario");
     if(valor == ""){    
             error.innerHTML = "Ingrese un usuario";    
             error.style.display = "block";
+            user.style.background = "#FAD2CD";
             return false;
     }else if (valor.indexOf("@") == -1){
                 error.innerHTML = "Ingrese un correo valido";  
                 error.style.display = "block";
+                user.style.background = "#FAD2CD";
                 return false;
         } else {
             error.style.display = 'none';
+            user.style.background = "white";
             return true;
         }
 }
 
 function validarPass(valor){
     var error = document.getElementById("error-pass");
+    
+    var pass = document.getElementById("password");
     if(valor == ""){
             error.innerHTML = "Ingrese una contraseña";    
             error.style.display = "block";
+            pass.style.background = "#FAD2CD";
             return false;
     }else if(valor.length < 5){
             error.innerHTML = "Ingrese minimo 5 caracteres";
             error.style.display = "block";
+            pass.style.background = "#FAD2CD";
             return false;
         }else{
             error.style.display = 'none';
+            pass.style.background = "white";
             return true;
         }
 }

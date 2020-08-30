@@ -126,36 +126,44 @@ function sortCategories(criteria, array){
 
 function productosDetalle(array){
     var htmlAppendToInner = "";
+    var valor  = (document.getElementById("search").value).toLowerCase();
     
     var container_div = document.getElementById("containerDecks");
     
     for (i = 0; i<array.length;i++){
         let dato = array[i];
-
+        var nombre = (dato.name).toLowerCase();
+        var desc = (dato.description).toLowerCase();
         if (((minCount == undefined) || (minCount != undefined && parseInt(dato.cost) >= minCount)) &&
         ((maxCount == undefined) || (maxCount != undefined && parseInt(dato.cost) <= maxCount))){
-            htmlAppendToInner+= `
-            <div class="col-md-4 carta" style ="padding: 10px;">
-                <div class="card h-100">
-                    <div class="card-header" style="text-align: right">Sold count: `+ dato.soldCount +`</div>
-                    <img src="`+ dato.imgSrc + `" class="card-img-top" alt="`+ dato.name +`">
-                    <div class="card-body">
-                        <h5 class="card-title">`+ dato.name +`</h5>
-                        <p class="card-text">`+ dato.description +`</p>
-                    </div>
-                    <div class="card-footer">
-                        <div style="font-size:25px; vertical-align:middle">`+ dato.currency+ `: `+dato.cost+`</div>
+            if ((nombre.indexOf(valor) != -1) || (desc.indexOf(valor) != -1)){
+                htmlAppendToInner+= `
+                <div class="col-md-4 carta" style ="padding: 10px;">
+                    <div class="card h-100">
+                        <div class="card-header" style="text-align: right">Cant. vendida: `+ dato.soldCount +`</div>
+                        <img src="`+ dato.imgSrc + `" class="card-img-top" alt="`+ dato.name +`">
+                        <div class="card-body">
+                            <h5 class="card-title">`+ dato.name +`</h5>
+                            <p class="card-text">`+ dato.description +`</p>
+                        </div>
+                        <div class="card-footer">
+                            <div style="font-size:25px; vertical-align:middle">`+ dato.currency+ `: `+dato.cost+`</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            `
+                `
+            }
         }
         container_div.innerHTML= htmlAppendToInner;
     }
-    //container_div.lastChild.innerHTML = htmlAppendToInner;
     
 }
 
+searchVar.addEventListener("keyup", (event) => {
+    productosDetalle(arrayproductos);
+    });
+
+/*
 searchVar.addEventListener("keyup", (event) => {
     getJSONData(PRODUCTS_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
@@ -191,4 +199,4 @@ searchVar.addEventListener("keyup", (event) => {
         container_div.innerHTML= htmlAppendToInner;
     }
 
-});
+});*/

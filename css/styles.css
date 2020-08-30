@@ -160,10 +160,7 @@ a.custom-card:hover {
   font-size: 45px;
 }
 
-.card-footer{
-  background-color: rgb(221, 238, 221);
-}
-.card-header{
+.card-footer, .card-header{
   background-color: rgb(221, 238, 221);
 }
 .dropdown-menu{
@@ -172,4 +169,10 @@ a.custom-card:hover {
 
 .dropdown-item{
   color: white;
+}
+
+#search{
+  width: 50%;
+  border: 2px solid black;
+  margin: 10px;
 }
