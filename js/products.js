@@ -138,22 +138,33 @@ function productosDetalle(array){
         ((maxCount == undefined) || (maxCount != undefined && parseInt(dato.cost) <= maxCount))){
             if ((nombre.indexOf(valor) != -1) || (desc.indexOf(valor) != -1)){
                 htmlAppendToInner+= `
-                <div class="col-md-4 carta" style ="padding: 10px;">
-                    <div class="card h-100">
-                        <div class="card-header" style="text-align: right">Cant. vendida: `+ dato.soldCount +`</div>
-                        <img src="`+ dato.imgSrc + `" class="card-img-top" alt="`+ dato.name +`">
-                        <div class="card-body">
-                            <h5 class="card-title">`+ dato.name +`</h5>
-                            <p class="card-text">`+ dato.description +`</p>
-                        </div>
-                        <div class="card-footer">
-                            <div style="font-size:25px; vertical-align:middle">`+ dato.currency+ `: `+dato.cost+`</div>
+                    <div  class="col-md-4 carta" style ="padding: 10px;">
+                        <div class="card h-100">
+                            <div class="card-header" style="text-align: right">Cant. vendida: `+ dato.soldCount +`</div>
+                            <img src="`+ dato.imgSrc + `" class="card-img-top" alt="`+ dato.name +`">
+                            <div class="card-body">
+                                <h5 class="card-title">`+ dato.name +`</h5>
+                                <p class="card-text">`+ dato.description +`</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col" style="font-size:25px; vertical-align:middle">`+ dato.currency+ `: `+dato.cost+`</div>
+                                    <div class="col align-self-center" style="font-size: 15px;"><a  href ="product-info.html#`+dato.name+`">Ver mas detalles</a></div> 
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 `
             }
         }
+        
+    }
+    if (htmlAppendToInner == ""){
+        htmlAppendToInner = `
+            <h3>No se han encontrado articulos con esos filtros<h3>
+        `;
+        container_div.innerHTML = htmlAppendToInner;
+    }else{
         container_div.innerHTML= htmlAppendToInner;
     }
     
@@ -163,40 +174,3 @@ searchVar.addEventListener("keyup", (event) => {
     productosDetalle(arrayproductos);
     });
 
-/*
-searchVar.addEventListener("keyup", (event) => {
-    getJSONData(PRODUCTS_URL).then(function(resultObj) {
-        if (resultObj.status === "ok") {
-            arrayproductos = resultObj.data;
-            //Muestro las categorías ordenadas
-        }
-
-    });
-
-    var container_div = document.getElementById("containerDecks");
-    var valor  = (document.getElementById("search").value).toLowerCase();
-    var htmlAppendToInner = "";
-    for (datos of arrayproductos) {
-        var nombre = (datos.name).toLowerCase();
-        var desc = (datos.description).toLowerCase();
-        if ((nombre.indexOf(valor) != -1) || (desc.indexOf(valor) != -1)){
-            htmlAppendToInner+= `
-            <div class="col-md-4 carta" style ="padding: 10px;">
-                <div class="card h-100">
-                    <div class="card-header" style="text-align: right">Sold count: `+ datos.soldCount +`</div>
-                    <img src="`+ datos.imgSrc + `" class="card-img-top" alt="`+ datos.name +`">
-                    <div class="card-body">
-                        <h5 class="card-title">`+ datos.name +`</h5>
-                        <p class="card-text">`+ datos.description +`</p>
-                    </div>
-                    <div class="card-footer">
-                        <div style="font-size:25px; vertical-align:middle">`+ datos.currency+ `: `+datos.cost+`</div>
-                    </div>
-                </div>
-            </div>
-            `
-        }
-        container_div.innerHTML= htmlAppendToInner;
-    }
-
-});*/

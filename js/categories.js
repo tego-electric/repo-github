@@ -70,8 +70,15 @@ function showCategoriesList(){
                 </div>
             </a>
             `
-        }
-
+        }        
+        
+    }
+    if (htmlContentToAppend == ""){
+        htmlContentToAppend = `
+            <h3>No se han encontrado articulos con esos filtros<h3>
+        `;
+        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+    }else{
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
