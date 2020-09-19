@@ -28,12 +28,13 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
       <div class="dropdown">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item"  href="cart.html">Mi carrito</a>
+          <a class="dropdown-item"   href="my-profile.html">Mi perfil</a>
+          <div class="dropdown-divider"></div>
           <button type="button" class="dropdown-item" onclick="signOut()">Cerrar sesión</button>
         </div>
       </div>
@@ -54,7 +55,7 @@
               </div>
             </div>
             <div class="col-md-4">
-              <img src="img/prod1.jpg" class="card-img">
+              <img src="" class="card-img">
             </div>
             
           </div>
@@ -137,7 +138,7 @@
           <div id="collapseTwo" class="collapse  " aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
               <div class="col-md-4">
-                <form action="">         
+                <form id="formulario-comentarios-nuevos">         
                   <div class="form-group ">
                     <label for="comment">Comentario:</label>
                     <textarea class="form-control" id="comment" rows="3" placeholder="Comentario" maxlength="200"></textarea>
@@ -173,6 +174,18 @@
      </div>
 
     </div>   
+
+<!-- seccion de productos relacionados -->
+    <div class="row pb-3 pt-3" >
+      <div class="col-md-12 pb-2 "style="font-family: 'Courier New', Courier, monospace;">
+        <h3 style="text-decoration: underline">Productos relacionados:</h3>
+      </div>
+      <div class="col-md-12" >
+        <div class="card-group" id="container-relacionados">
+
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer class="text-muted">

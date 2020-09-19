@@ -137,6 +137,7 @@ function productosDetalle(array){
         if (((minCount == undefined) || (minCount != undefined && parseInt(dato.cost) >= minCount)) &&
         ((maxCount == undefined) || (maxCount != undefined && parseInt(dato.cost) <= maxCount))){
             if ((nombre.indexOf(valor) != -1) || (desc.indexOf(valor) != -1)){
+                var url = new URL("file:///D:/archivos/Cursos/jovenes%20a%20programar/Fase%202/Obligatorio/product-info.html"+ "?auto=" + dato.name);
                 htmlAppendToInner+= `
                     <div  class="col-md-4 carta" style ="padding: 10px;">
                         <div class="card h-100">
@@ -149,7 +150,7 @@ function productosDetalle(array){
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col" style="font-size:25px; vertical-align:middle">`+ dato.currency+ `: `+dato.cost+`</div>
-                                    <div class="col align-self-center" style="font-size: 15px;"><a  href ="product-info.html#`+dato.name+`">Ver mas detalles</a></div> 
+                                    <div class="col align-self-center" style="font-size: 15px;"><a  href ="`+url+`">Ver mas detalles</a></div> 
                                 </div>
                             </div>
                         </div>

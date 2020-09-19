@@ -1,21 +1,25 @@
-var locacion = "";
 var text = document.getElementById("comment");
+const urlParams = new URLSearchParams(window.location.search);
+const page_parameter = urlParams.get('auto');
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-    locacion =  window.location.href;
-    var pos = locacion.lastIndexOf("#");
-    locacion = locacion.slice(pos + 1,locacion.length);
-    while (locacion.indexOf("%20") != -1){
-        locacion = locacion.replace("%20"," ");
-    }
-
+    
+    var arrayCompleto = [];
+    getJSONData(PRODUCTS_URL).then(function(resultObj) {
+        if (resultObj.status === "ok") {
+            //arrayproductos = resultObj.data;
+            //Muestro las categorías ordenadas
+            arrayCompleto = resultObj.data;           
+        }
+    });
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
             //arrayproductos = resultObj.data;
             //Muestro las categorías ordenadas
-            showDetails(resultObj.data)
+            showDetails(resultObj.data,arrayCompleto);
         }
     });
 
@@ -30,15 +34,16 @@ document.addEventListener("DOMContentLoaded", function(e){
             
         }
     });
+    
 
 });
 
 
 // seccion de descripcion
-function showDetails(descripcion){
-    var contenedor = document.getElementById("contenedor");
+function showDetails(descripcion,array){
     
-    if ((descripcion.name).toLowerCase() == locacion.toLowerCase()){
+    
+    if ((descripcion.name).toLowerCase() == page_parameter.toLowerCase()){
         var imagen = document.getElementsByTagName("img");
         for(let i =0; i<imagen.length; i++){
             imagen[i].src = descripcion.images[i]
@@ -47,8 +52,27 @@ function showDetails(descripcion){
         document.getElementById("textoVendidos").innerHTML = "Cantidad de vendidos: "+ descripcion.soldCount;
         document.getElementById("precioCarta").innerHTML = "Adquieralo desde "+ descripcion.currency + " "+ descripcion.cost;
         document.getElementById("descripcionCarta").innerHTML = descripcion.description;
+
+        var contenedor = document.getElementById("container-relacionados");
+        var htmlToAppend = "";
+        for(let k = 0; k < (descripcion.relatedProducts).length; k++){
+            var pos = descripcion.relatedProducts[k];
+            var url = new URL("file:///D:/archivos/Cursos/jovenes%20a%20programar/Fase%202/Obligatorio/product-info.html"+ "?auto=" + array[pos].name);
+            htmlToAppend += `
+            <div class="col-md-3">
+                <div class="card" style="background-color: rgb(221, 238, 221); width: 16rem;">
+                    <img src="`+array[pos].imgSrc+`" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">`+array[pos].name+`</h5>
+                    <a href="`+url+`" >Ir a la descripción</a>
+                    </div>
+                </div>
+            </div>
+            `
+        }
+        contenedor.innerHTML += htmlToAppend;
     }else{
-        contenedor.innerHTML = "<h1>La descripcion de este producto no esta disponible. Disculpe las molestias.</h1>";
+        document.getElementById("contenedor").innerHTML = "<h1>La descripcion de este producto no esta disponible. Disculpe las molestias.</h1>";
     }
 
 }
@@ -109,6 +133,9 @@ function envioComentario(){
         }, 5000);
 
         agregarComentarios(score,text.value,newuser,dateStr);
+        document.getElementById("formulario-comentarios-nuevos").reset();
+        document.getElementById("contador").innerHTML = "200";
+        pintarEstrellas(0);
     }
 }
 
@@ -126,7 +153,8 @@ function pintarEstrellas(num){
 }
 
 function agregarComentarios(score,description,user,dateTime){
-    var htmlToAppend = `
+    if (document.getElementById("contenedor").innerHTML != "<h1>La descripcion de este producto no esta disponible. Disculpe las molestias.</h1>"){
+        var htmlToAppend = `
         <div class="card-body">
             <div class="row border border-dark justify-content-between" style="background-color: rgb(221, 238, 221); font-size: 18px;">
             <div class="col-md-4">
@@ -141,23 +169,24 @@ function agregarComentarios(score,description,user,dateTime){
                 <div class="row justify-content-center">
                     <div class="form-group ">
                     <p style="font-size:19px">Calificación:</p>`;
-    for(let k = 0; k<5;k++){
-        if (k<score){
-            htmlToAppend += `<span class="fa fa-star checked" ></span>`;
-        }else{
-            htmlToAppend += `<span class="fa fa-star"></span>`;
+        for(let k = 0; k<5;k++){
+            if (k<score){
+                htmlToAppend += `<span class="fa fa-star checked" ></span>`;
+            }else{
+                htmlToAppend += `<span class="fa fa-star"></span>`;
+            }
         }
-    }
-    htmlToAppend += `            
+        htmlToAppend += `            
+                        </div>
                     </div>
+                    
                 </div>
-                
-            </div>
-            <div class="col-md-8 border border-dark" >
-            `+description+`
+                <div class="col-md-8 border border-dark" >
+                `+description+`
+                </div>
             </div>
         </div>
-    </div>
-`
-document.getElementById("collapseOne").innerHTML += htmlToAppend;
+        `
+        document.getElementById("collapseOne").innerHTML += htmlToAppend;    
+    }
 }
