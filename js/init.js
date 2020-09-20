@@ -78,6 +78,7 @@ function onSignIn(googleUser) {
 function signOut(){
   sessionStorage.clear();
   window.location.assign('login.html');
+  
 }
 /*
 function signOut() {
