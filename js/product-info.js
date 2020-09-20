@@ -57,14 +57,17 @@ function showDetails(descripcion,array){
         var htmlToAppend = "";
         for(let k = 0; k < (descripcion.relatedProducts).length; k++){
             var pos = descripcion.relatedProducts[k];
-            var url = new URL("file:///D:/archivos/Cursos/jovenes%20a%20programar/Fase%202/Obligatorio/product-info.html"+ "?auto=" + array[pos].name);
+            var url = window.location.href;
+            var posicion = url.lastIndexOf("/");
+            var url2 = url.slice(0,posicion+1);            
+            var url3 = new URL(url2+"product-info.html"+ "?auto=" + array[pos].name);
             htmlToAppend += `
             <div class="col-md-3">
                 <div class="card" style="background-color: rgb(221, 238, 221); width: 16rem;">
                     <img src="`+array[pos].imgSrc+`" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h5 class="card-title">`+array[pos].name+`</h5>
-                    <a href="`+url+`" >Ir a la descripción</a>
+                    <a href="`+url3+`" >Ir a la descripción</a>
                     </div>
                 </div>
             </div>
