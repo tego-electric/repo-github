@@ -1,0 +1,38 @@
+*Entrega 0:
+	-ya disponia de un repositorio git y no complico tanto
+*Entrega 1:
+	-modelar las entidades llevo un poco de repaso de lo que se habia 
+	dado previamente
+	-la peticion y la pantalla de autentificacion llevo un poco de trabajo
+	pero con lo dado en clase termino siendo un exito
+	-sin embargo el desafiati si fue un reto, hacerlo funcionar bien 
+	y que sirviera llevo algo de tiempo
+*Entrega 2:
+	-gracias a lo que ya estaba hecho en categorias, al entender que hacian
+	las funciones y demas fue crt+c, crt+v y modificar algunas cosas sencillas
+	y el grupal no supuso un problema mas alla del dise�o
+	-el desafiate dio trabajo, pero gracias a unos tips de algunos compa�eros
+	salio adelante sin problemas.
+	-tuve que re-dise�ar el login, llevo mucho trabajo y tiempo, pero
+	finalmente quede satisfecho con el resultado final
+*Entrega 3:
+	-esta entrega llevo mas tiempo de dise�o que de programacion en si, 
+	acomodar las cosas como queria y darle un dise�o llevo bastante trabajo
+	-la puntuacion en formato estrella llevo un poco de tiempo, pero como
+	fue grupal logramos sacarlo bien
+*Entrega 4:
+	-El desafiate ya lo habia completado en la entrega anterior
+	-La pauta individual fue similar a alguna de las entregas anteriores y no supuso mucho problema, mas 
+	haya del diseño
+	-Las pautas grupales, algunas ya las tenia hechas de entregas anteriores como el cierre de sesion y el desplegable
+	en el nombre ingresado en el logeo, el resto, fue buscar en boostrap y elegir como hacerlo
+	
+*Entrega 5:
+	-el trabajo grupal llevo un poco de tiempo pero se logro completar todo, y luego con un poco de dseño de mi previamente
+	quedo completado
+	-El diseño llevo un poquito de trabajo, pero quede satisfecho con el resultado
+	-Ademas implemente un modal para el cierre de sesion, un filtro por menos, un boton para eliminar el articulo y unos botones
+	que bloquean y desbloquean las pestañas de lista de compra y envio dependiendo de en cual se estrella. El filtro y el eliminar
+	fueron los que llevo mas trabajo, el filtro configurarlo bien para que funcionara en cada situacion llevo tiempo y testeo de posibles
+	situaciones. El eliminar fue ensayo y error, probar diferentes cosas para ver que era lo mejor y dar con una solucion.
+	-Quedo completa la parte html del metodo de envio y el modal de metodo de compra

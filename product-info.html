@@ -35,7 +35,7 @@
           <a class="dropdown-item"  href="cart.html">Mi carrito</a>
           <a class="dropdown-item"   href="my-profile.html">Mi perfil</a>
           <div class="dropdown-divider"></div>
-          <button type="button" class="dropdown-item" onclick="signOut()">Cerrar sesión</button>
+          <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modalSesion">Cerrar sesión</button>
         </div>
       </div>
     </div>
@@ -138,7 +138,7 @@
             
           </div>
         </div>
-
+        <!-- seccion de comentarios nuevos -->
         <div class="card">
           <div class="card-header" id="headingTwo">
             <h2 class="mb-0">
@@ -185,10 +185,8 @@
       </div>
      </div>
 
-    </div>   
-
-
-  </div>
+    </div>  
+  </div>  
 
   <footer class="text-muted">
     <div class="container">
@@ -199,6 +197,28 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+  
+  <!-- Modal cierre de sesión -->
+  <div class="modal fade" id="modalSesion" tabindex="-1" aria-labelledby="modalSesion" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cierre de sesión</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div class="modal-body">
+        Esta seguro que desea cerrar sesión?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success"  onclick="signOut()" >Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- spinner -->
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

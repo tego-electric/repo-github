@@ -86,7 +86,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
     productosDetalle(arrayproductos);
 }
 
-
+// filrtos numericos y alfabeticos
 function sortCategories(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_PRICE)
@@ -124,6 +124,7 @@ function sortCategories(criteria, array){
     return result;
 }
 
+// funcion que muestra los detalles de la lista de productos
 function productosDetalle(array){
     var htmlAppendToInner = "";
     var valor  = (document.getElementById("search").value).toLowerCase();
@@ -134,6 +135,8 @@ function productosDetalle(array){
         let dato = array[i];
         var nombre = (dato.name).toLowerCase();
         var desc = (dato.description).toLowerCase();
+
+        // se tiene en cuanta si hay filtros aplicados se evalua y se filtra correspondientemente
         if (((minCount == undefined) || (minCount != undefined && parseInt(dato.cost) >= minCount)) &&
         ((maxCount == undefined) || (maxCount != undefined && parseInt(dato.cost) <= maxCount))){
             if ((nombre.indexOf(valor) != -1) || (desc.indexOf(valor) != -1)){
@@ -173,6 +176,7 @@ function productosDetalle(array){
     }
     
 }
+
 
 searchVar.addEventListener("keyup", (event) => {
     productosDetalle(arrayproductos);

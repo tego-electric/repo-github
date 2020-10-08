@@ -40,11 +40,13 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 
 // seccion de descripcion
-function showDetails(descripcion,array){
-    
-    
+
+// funcion que muestra los detalles del producto
+function showDetails(descripcion,array){    
     if ((descripcion.name).toLowerCase() == page_parameter.toLowerCase()){
         var imagen = document.getElementsByTagName("img");
+
+        // agrega las imagenes al carousel y en el titulo y agrega otros datos en el primer container
         for(let i =0; i<imagen.length; i++){
             imagen[i].src = descripcion.images[i]
         }
@@ -53,6 +55,7 @@ function showDetails(descripcion,array){
         document.getElementById("precioCarta").innerHTML = "Adquieralo desde "+ descripcion.currency + " "+ descripcion.cost;
         document.getElementById("descripcionCarta").innerHTML = descripcion.description;
 
+        // se agregan los productos relacionados corresponientes
         var contenedor = document.getElementById("container-relacionados");
         var htmlToAppend = "";
         for(let k = 0; k < (descripcion.relatedProducts).length; k++){
@@ -87,6 +90,7 @@ text.addEventListener("keyup", (event) => {
     document.getElementById("contador").innerHTML = (200 - text.value.length);
     })
 
+    // funcion que valida los campos del envio de comentarios, los agrega, con fecha y usuario
 function envioComentario(){
     var textarea = document.getElementById("comment").value;
     var parrafo =  document.getElementById("ms-success");
@@ -95,9 +99,9 @@ function envioComentario(){
     document.getElementById("error-estrellas").style.display = "none";
     document.getElementById("error-textarea").style.display = "none";
 
+    // procesamiento de la hora actual de la pc
     var date = new Date();
     var dateStr = "";
-
     dateStr += date.getFullYear() + "-";
     if(date.getMonth() < 10){
         dateStr += "0";
@@ -109,7 +113,7 @@ function envioComentario(){
     dateStr += date.getDate() + " ";
     dateStr += date.getHours() + ":"+date.getMinutes()+":"+date.getSeconds();
     
-    
+    // validacion de campos
     if ((textarea == "")  || (estrellas == "")){
         if(textarea == ""){
             document.getElementById("error-textarea").style.display = "block";
@@ -142,7 +146,7 @@ function envioComentario(){
     }
 }
 
-
+// funcion que pinta las estrellas dependiendo del valor ingresado
 function pintarEstrellas(num){
     var estrellas = document.getElementsByName("star");
     for(let i =0; i<estrellas.length;i++){
@@ -155,6 +159,7 @@ function pintarEstrellas(num){
     document.getElementById("estrellas").value = num;
 }
 
+// funcion del boton de agregado de comentarios
 function agregarComentarios(score,description,user,dateTime){
     if (document.getElementById("contenedor").innerHTML != "<h1>La descripcion de este producto no esta disponible. Disculpe las molestias.</h1>"){
         var htmlToAppend = `

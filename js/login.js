@@ -4,6 +4,8 @@
 document.addEventListener("DOMContentLoaded", function(e){
     
 });
+
+// funcion que valida que el usuario esta bien ingresado
 function validarUsuario(valor){
     var error = document.getElementById("error-usuario");
     var user =  document.getElementById("usuario");
@@ -24,6 +26,7 @@ function validarUsuario(valor){
         }
 }
 
+// funcion que valida que la pass esta bien ingresa
 function validarPass(valor){
     var error = document.getElementById("error-pass");
     
@@ -45,6 +48,7 @@ function validarPass(valor){
         }
 }
 
+// funcion del boton de ingresar que valida los datos
 function validarParametros(){
     var user = document.getElementById("usuario").value;
     var pass = document.getElementById("password").value;
