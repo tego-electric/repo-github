@@ -466,6 +466,10 @@ function validarCompra(){
         if (validoRadio && digitos && fecha && numero){
             $('#modalPago').modal('hide');            
             $('#modalMensaje').modal('show');
+            var user = sessionStorage.getItem("usuario");
+            var pos = user.lastIndexOf("@");
+            var newuser = user.slice(0,pos);
+            document.getElementById("titleModalMensaje"). innerHTML += " " + newuser + "!!!";
             document.getElementById("mensajeSatisfactorio").innerHTML = mensaje;
         }
     }else{
@@ -474,6 +478,10 @@ function validarCompra(){
         if (validoRadio && pais && cuenta){
             $('#modalPago').modal('hide');
             $('#modalMensaje').modal('show');
+            var user = sessionStorage.getItem("usuario");
+            var pos = user.lastIndexOf("@");
+            var newuser = user.slice(0,pos);
+            document.getElementById("titleModalMensaje"). innerHTML += " " + newuser + "!!!";
             document.getElementById("mensajeSatisfactorio").innerHTML = mensaje;
         }
     }

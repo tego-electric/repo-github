@@ -36,3 +36,14 @@
 	fueron los que llevo mas trabajo, el filtro configurarlo bien para que funcionara en cada situacion llevo tiempo y testeo de posibles
 	situaciones. El eliminar fue ensayo y error, probar diferentes cosas para ver que era lo mejor y dar con una solucion.
 	-Quedo completa la parte html del metodo de envio y el modal de metodo de compra
+
+*Entrega 6: 
+	-Lo individual ya lo tenia casi hecho de la entrega anterior, faltaba la validacion de calculos y calculo de subtotales y porcentajes,
+	los radio button llevo un poco de tiempo, no recordaba como trabajar con ellos, pero salio bien. Al mensaje de compra satisfactoria, opte por
+	hacerlo en otro modal. Tambien agregue restricciones a los input dependiendo del tipo de dato que hay que ingresar, por ej: al campo de numero
+	de puerta solo se pueden ingresar numeros, dio su trabajito pero salio. Por ultimo, dentro del metodo de pago, agregue una seccion que depende 
+	de la opcion, transferencia o credito, desplega	un conteiner con info a rellenar y info ya obtenida previamente dependiendo de la opcion elegida. 
+	-La pauta grupal llevo tiempo pero entre todos cooperamos para tirar ideas y sacarlo adelante y termianrla dentro del tiempo de clase y todos 
+	pudimos hacer captura de pantalla para luego poder transferirlo a lo que teniamos
+	-El deasfia te ya lo tenia completo de la entrega anterior, supuso trabajo, hasta que se me ocurrio hacer un arreglo global y trabajar sobre el
+	para eliminar los articulos en vez de ocultarlos, que era la idea original con la que estaba trabajando
