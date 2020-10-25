@@ -122,65 +122,69 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text " id="envioDireccion" >Direccion</span>
                             </div>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="direccion" onblur="validarDireccion()">
                           </div>
-                            <label class ="container label-error" id="error-direccion" style="display: block;">Ingrese una direccion no vacia</label>
+                            <label class ="container label-error" id="error-direccion">Ingrese una direccion no vacia</label>
                         </div>
                       </div>
                     <!-- esquina, puerta y pais -->
-                      <div class=" form-group row justify-content-between mt-3">
+                      <div class=" form-group row mt-3">
                         <div class="col-md-4">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text" id="envioPuerta">Num. puerta</span>
                             </div>
-                            <input type="text" class="form-control" >
+                            <input type="text" class="form-control" id="puerta" onblur="validarPuerta()">
                           </div>
-                          <label class ="col-sm-12 label-error mt-1" id="error-puerta" style="display: block;">Ingrese un numero de puerta valido</label>
+                          <label class ="col-sm-12 label-error mt-1" id="error-puerta" >Ingrese un numero de puerta valido</label>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text" id="envioesquina">Esquina</span>
                             </div>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="esquina" onblur="validarEsquina()">
                           </div>
-                          <label class ="col-sm-12 label-error mt-1" id="error-puerta" style="display: block;">Ingrese un esquina valida</label>                        
-                        </div>
+                          <label class ="col-sm-12 label-error mt-1"id="error-esquina">Ingrese un esquina valida</label>                        
+                        </div>                                             
+                      </div>  
+
                       <!-- selector de paises -->
-                        <div class="col-md-4 align-items-center mb-3">
+                      <div class="form-group row mt-3">                         
+                         <div class="col-md-4 align-items-center mb-3">
                           <label for="cars">Pais: </label>
-                          <select name="cars" id="cars">
+                          <select name="selectPais" id="pais" onclick="ValidarPais(this.value)">
                             <option value="nada">--Eliga una opcion--</option>
                             <option value="Argentina">Argentina</option>
                             <option value="Brazil">Brasil</option>
                             <option value="Uruguay">Uruguay</option>
                           </select>
-                          <label class ="col-sm-10 label-error mt-1" id="error-pais" style="display: block;">Selecciones un pais</label>                        
+                          <label class ="col-sm-10 label-error mt-1"id="error-pais">Seleccione un pais</label>                        
                         </div>
-                      </div>  
+                      </div>
+
                      <!-- Tipo de envio -->
                       <div class="form-group">
                         <h5>Tipo de envio:</h5>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radiobuttonenvio" id="envioPremium" value="15%">
+                          <input class="form-check-input" type="radio" name="radiobuttonenvio" id="envioPremium" value="15" onclick="precioTotal(this.value); validarRadioEnvio()">
                           <label class="form-check-label" for="envioPremium">
                             Premium (2-5 días) - Costo del 15% sobre el subtotal.
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radiobuttonenvio" id="envioExpress" value="7%">
+                          <input class="form-check-input" type="radio" name="radiobuttonenvio" id="envioExpress" value="7" onclick="precioTotal(this.value) ; validarRadioEnvio()">
                           <label class="form-check-label" for="envioExpress">
                             Express (5-8 días) - Costo del 7% sobre el subtotal.
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radiobuttonenvio" id="Standar" value="5%">
+                          <input class="form-check-input" type="radio" name="radiobuttonenvio" id="Standar" value="5" onclick="precioTotal(this.value); validarRadioEnvio()">
                           <label class="form-check-label" for="Standar">
                             Standard (12 a 15 días) - Costo del 5% sobre el subtotal.
                           </label>
                         </div>
-                        <label class ="col-sm-6 label-error mt-1" id="error-selector" style="display: block;">Eliga una categoria de envio</label>                        
+                        <label class ="col-sm-6 label-error mt-1" name="mensajeError" id="error-selector">Eliga una categoria de envio</label>                        
                       </div>  
 
                       <hr>
@@ -197,7 +201,7 @@
                 <div class="col-md-10">
                   <div class="row justify-content-end">
                     <div class="col-md-2"><button type="button" class="btn btn-success btn-block" onclick="volverALista()">Atras</button></div>
-                    <div class="col-md-2 text-center"><button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modalPago">Siguiente</button></div>
+                    <div class="col-md-2 text-center"><button type="button" class="btn btn-success btn-block" onclick="validarMetodoDeEnvio()">Siguiente</button></div>
                   </div>
                 </div> 
               </div>
@@ -239,41 +243,64 @@
           <!-- fila de detalles de compra -->
           <div class="row">
             <div class="col">
-              <div class="row justify-content-end pr-3"><b><span>Metodo de envio:</span></b></div>
-              <div class="row justify-content-end pr-3"><b><span>Total a pagar: </span></b></div>              
+              <div class="row justify-content-center pr-3"><b><span>Subtotal:</b> <span id="subtotalModal"></span></span></div>
+              <div class="row justify-content-center pr-3"><b><span>Envio:</span></b> <span id="envioModal"></span></div>
+              <hr>
+              <div class="row justify-content-center pr-3"><b><span>Total:</span></b> <span id="totalModal"></span></div>              
             </div>
-          </div>
-          <hr>
-          <!-- fila de detalles del metodo de pago -->
-          <div class="row">
+            <!-- metodo de pago -->
             <div class="col">
               <div class="row justify-content-center"><h5 style="text-decoration: underline;"><b>Metodo de pago</b></h5></div>
               <div class="row justify-content-center">
-                <div class="col-md-6">
+                <div class="col-md">
                   <div class="form-group">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="radiobuttonpago" id="pagoCredito" value="15%">
-                      <label class="form-check-label" for="pagoCredito">
-                        Tarjeta de credito
-                      </label>
+                      <input class="form-check-input" type="radio" name="radiobuttonpago" id="pagoCredito" value="credito" onclick="validarRadioPago();mostarContainer(this.value)">
+                      <label class="form-check-label" for="pagoCredito"><i class="fas fa-credit-card"></i>  Tarjeta de credito</label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="radiobuttonpago" id="pagoBancario" value="7%">
-                      <label class="form-check-label" for="pagoBancario">
-                        Transferencia bancarria
-                      </label>
+                      <input class="form-check-input" type="radio" name="radiobuttonpago" id="pagoBancario" value="bancario" onclick="validarRadioPago();mostarContainer(this.value)">
+                      <label class="form-check-label" for="pagoBancario"><i class="fas fa-globe"></i>  Transferencia bancarria</label>
                     </div>
-                    <label class ="col label-error mt-1" id="error-metodopago" style="display: block;">Eliga un metodo de pago</label>                        
+                    <label class ="col label-error mt-1" id="error-metodopago">Eliga un metodo de pago</label>                        
                   </div>
                 </div>  
               </div>
             </div>
           </div>
+          <hr>
+          <!-- detalles del metodo de pago -->
+          <div class="row" id="containerMetodoPAgo">
+            
+          </div>
+        </div>
+        
+        <!-- botones del modal -->
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col"><button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Volver</button></div>            
+              <div class="col"><button type="button" class="btn btn-success btn-block" onclick="validarCompra() ">Comprar</button></div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal de mensaje de compra -->
+  <div class="modal fade" tabindex="-1" id="modalMensaje">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Felicidades!!!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="mensajeSatisfactorio">
+          Esta seguro que desea cerrar sesión?
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Volver</button>
-            <button type="button" class="btn btn-success btn-block">Comprar</button>
-          </div>
+          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="window.location.assign('index.html');">Aceptar</button>
         </div>
       </div>
     </div>
