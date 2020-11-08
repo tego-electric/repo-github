@@ -186,3 +186,20 @@ a.custom-card:hover {
   border-radius:3px;
   color: black;
 }
+
+
+.formPerfil{
+  padding-top: 10px;
+  border: 1px solid rgb(0, 0, 0);
+  margin-bottom: 10px;
+}
+
+.rowButtonPerfil{
+  padding: 5px;
+  border-top: 1px solid rgb(0, 0, 0);
+}
+
+.subtitle-perfil{
+  background-color: rgb(221, 238, 221);
+  padding-bottom: 5px;
+}

@@ -47,3 +47,9 @@
 	pudimos hacer captura de pantalla para luego poder transferirlo a lo que teniamos
 	-El deasfia te ya lo tenia completo de la entrega anterior, supuso trabajo, hasta que se me ocurrio hacer un arreglo global y trabajar sobre el
 	para eliminar los articulos en vez de ocultarlos, que era la idea original con la que estaba trabajando
+*Entrega 7:
+	-El individual la parte 1 fue similar a tareas anteriores y la parte 2 si dio un poquito mas de trabajo, teniendo que revisar ejercicios hechos en clase
+	y ver en que partes tenia que funcionar dicha parte pedida.
+	-las pautas grupales ya las tenia hechas de entregas anteriores, pero igual llevo su tiempito acomodar todo a gusto
+	-El desafia si me llevo trabajo de investigacion y consejos de compañeros para hacerlo funcionar, ya que no entendia bien la logica tras lo que 
+	habia que hacer. Tras haberlo hecho, logre mas o menos entenderlo y modificarlo a mis necesidades.

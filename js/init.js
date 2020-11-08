@@ -56,7 +56,24 @@ document.addEventListener("DOMContentLoaded", function(e){
       btns[i].innerHTML = newuser;
     }
   }
-
+  
+  if (localStorage.getItem("perfilUsuario") == null){
+    var datos = {
+      "Nombres":"",
+      "Apellidos": "",
+      "Edad":"",
+      "Telefono": "",
+      "correo" : "",
+      "FotoPerfil":""
+      }
+    localStorage.setItem("perfilUsuario",JSON.stringify(datos));
+  }else{
+    var imagenes = document.getElementsByName("nav_img_perfil");
+    var datos = JSON.parse(localStorage.getItem("perfilUsuario"))
+    for(i = 0; i < imagenes.length; i++){
+      imagenes[i].src = datos.FotoPerfil;
+    }
+  }
 });
 
 

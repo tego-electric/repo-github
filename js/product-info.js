@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 // funcion que muestra los detalles del producto
 function showDetails(descripcion,array){    
     if ((descripcion.name).toLowerCase() == page_parameter.toLowerCase()){
-        var imagen = document.getElementsByTagName("img");
+        var imagen = document.getElementsByName("img_carrousel");
 
         // agrega las imagenes al carousel y en el titulo y agrega otros datos en el primer container
         for(let i =0; i<imagen.length; i++){

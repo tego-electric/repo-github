@@ -41,6 +41,7 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <div class="dropdown">
+        <img src="" style="width: 70px; margin-top: 2px;margin-bottom: 2px;" name="nav_img_perfil">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -52,14 +53,99 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+  <div class="titulo-class text-center p-4">
+    <h2>Mi perfil</h2>    
   </div>
+
+  <div class="row justify-content-center">
+    <!-- formulario datos -->
+    <div class="col-md-6 formPerfil">
+      <form action="">
+        <h4 class="subtitle-perfil">Datos personales:</h4>
+        <!-- nombre y apellido -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Nombres</span>
+              </div>
+              <input type="text" class="form-control" id="nombresPerfil" placeholder="Nombres" aria-label="nombres" aria-describedby="basic-addon1" onblur="nombrePerfil(this.value)">
+              <label class ="container label-error" id="error-nombresPerfil" >Ingrese sus nombres</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Apellidos</span>
+              </div>
+              <input type="text" class="form-control"  id="apellidosPerfil" placeholder="Apellidos" aria-label="apellidos" aria-describedby="basic-addon1" onblur="apellidoPerfil(this.value)">
+              <label class ="container label-error" id="error-apellidosPerfil" >Ingrese sus apellidos</label>
+            </div>
+          </div>
+        </div>
+        <!-- correo -->
+        <div class="row">
+          <div class="col-md-7">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">E-mail</span>
+              </div>
+              <input type="email" class="form-control" id="e_mailPerfil" placeholder="e_mail" aria-label="e_mailPerfil" aria-describedby="basic-addon1" onblur="emailPerfil(this.value)">
+              <label class ="container label-error" id="error-e_mailPerfil" ></label>
+            </div>
+          </div>
+        </div>
+        <!-- telefono y edad -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Edad</span>
+              </div>
+              <input type="text" class="form-control" id="edadPerfil" placeholder="Edad" aria-label="edadPerfil" aria-describedby="basic-addon1" onblur="edadPersona(this.value)" maxlength="3">
+              <label class ="container label-error" id="error-edadPerfil" >Ingrese su edad</label>
+            </div>
+          </div>
+            <div class="col-md-4">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Teléfono</span>
+                </div>
+                <input type="text" class="form-control" id="telefonoPerfil" placeholder="Telefono" aria-label="telefonoPerfil" aria-describedby="basic-addon1" onblur="telefonoPersona(this.value)">
+                <label class ="container label-error" id="error-telefonoPerfil" >Ingrese un numero de contacto</label>
+              </div>
+            </div>
+        </div>
+        <!-- foto de perfil -->
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <h4 class="subtitle-perfil">Foto de perfil(opcional):</h4>
+              <input type="file" class="form-control-file" id="formImage" accept="image/*" onchange="subirImagen()">
+            </div>            
+          </div>          
+        </div>
+        <div class="row">
+          <div class="col-md-6"><img src="" id="imagePreview" class="card-img-top"></div>
+        </div>
+      </form>
+      <!-- boton modificar -->
+      <div class="row justify-content-end mb-2">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-outline-success btn-sm"><span onclick="modificarPerfil()">Modificar perfil</span></button>
+          <button type="button" class="btn btn-outline-success btn-sm" id="restablecerButton"><span onclick="restablecer()">Restablecer</span></button>
+        </div>
+      </div>
+      <!-- Boton guardar datos -->
+      <div class="row justify-content-center rowButtonPerfil">
+        <div class="col-md-5">
+          <button type="button" class="btn btn-success btn-lg btn-block"  onclick="guardarDatosPerfil()" >Guardar datos</button>
+        </div>
+      </div>
+    </div>    
+  </div>
+
   <footer class="text-muted">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
@@ -72,6 +158,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
   <!-- Modal cierre de sesión -->
   <div class="modal fade" id="modalSesion" tabindex="-1" aria-labelledby="modalSesion" aria-hidden="true">
     <div class="modal-dialog">
@@ -87,6 +174,43 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-success"  onclick="signOut()" >Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal guardar datos exitosos -->
+  <div class="modal fade" id="modalGuardarDatos" tabindex="-1" aria-labelledby="modalGuardarDatos" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Datos guardados exitosamente! </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal error guardar datos -->
+  <div class="modal fade" id="modalErrorGuardarDatos" tabindex="-1" aria-labelledby="modalErrorGuardarDatos" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Error al guardar los datos </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Habilite la edición de datos o ingrese valores distintos.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
         </div>
       </div>
     </div>
