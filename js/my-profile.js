@@ -195,7 +195,7 @@ function guardarDatosPerfil(){
     var edad = document.getElementById("edadPerfil").value;
     var telefono = document.getElementById("telefonoPerfil").value;
     var imagPerfil = document.getElementById("imagePreview").src;
-    if (imagPerfil == "file:///D:/archivos/Cursos/jovenes%20a%20programar/Fase%202/Obligatorio/my-profile.html"){
+    if (imagPerfil.indexOf("my-profile.html") != -1){
         imagPerfil = "";
     }
 
